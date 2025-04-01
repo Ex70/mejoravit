@@ -1,0 +1,44 @@
+body {
+    /* background-color: rgb(240, 241, 242); */
+    background-image: url('../../public/images/fondoalter.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* backdrop-filter: blur(10px); */
+    transition: 2s;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.349);
+}
+
+/* Para navegadores WebKit (Chrome, Safari, Edge) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Para Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.formlop:hover {
+    background-color: rgba(255, 255, 255, 0.716);
+    transition: 1s;
+
+}
+
+.formlop {
+    zoom: 120%;
+    transition: 1s;
+    background-color: rgba(255, 255, 255, 0.796);
+    backdrop-filter: blur(10px);
+}
