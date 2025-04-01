@@ -18,14 +18,13 @@ Route::middleware(['auth', NoCache::class, CheckRole::class, RedirectIfSessionEx
 
     //Inicio
     Route::get('/inicio', [InicioController::class, 'index'])->name('inicio');
-
+    Route::get('/registrar-usuario', [RegistrarEmpleadorController::class, 'index'])->name('usuario');
+    Route::post('/registrar-empleador', [RegistrarEmpleadorController::class, 'store'])->name('registrar_empleador.store');
+    Route::get('/inscribir-credito', [DerechoHabienteController::class, 'index'])->name('derecho_habiente.index');
+    Route::post('/credito-registrado', [DerechoHabienteController::class, 'store'])->name('derecho_habiente.store');
 });
 
-Route::get('/inscribir-credito', [DerechoHabienteController::class, 'index'])->name('derecho_habiente.index');
-Route::post('/credito-registrado', [DerechoHabienteController::class, 'store'])->name('derecho_habiente.store');
 
-Route::get('/registrar-usuario', [RegistrarEmpleadorController::class, 'index'])->name('usuario');
-Route::post('/registrar-empleador', [RegistrarEmpleadorController::class, 'store'])->name('registrar_empleador.store');
 
 // Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout')->middleware(NoCache::class);
