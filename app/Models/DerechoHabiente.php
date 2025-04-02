@@ -29,11 +29,36 @@ class DerechoHabiente extends Model
 
     public function datosempresa()
     {
-        return $this->hasMany(DatosEmpresa::class);
+        return $this->hasMany(DatosEmpresa::class, 'derechohabiente_id');
     }
 
     public function datosvivienda()
     {
-        return $this->hasMany(DatosVivienda::class);
+        return $this->hasMany(DatosVivienda::class, 'derechohabiente_id');
+    }
+
+    public function datoscredito()
+    {
+        return $this->hasMany(DatosCredito::class, 'derechohabiente_id');
+    }
+
+    public function beneficiarios()
+    {
+        return $this->hasMany(Beneficiarios::class, 'derechohabiente_id');
+    }
+
+    public function cartaprotesta()
+    {
+        return $this->hasMany(CartaProtesta::class, 'derechohabiente_id');
+    }
+
+    public function presupuestomejoramiento()
+    {
+        return $this->hasMany(PresupuestoMejoramiento::class, 'derechohabiente_id');
+    }
+
+    public function referencias()
+    {
+        return $this->hasMany(Referencias::class, 'derechohabiente_id');
     }
 }

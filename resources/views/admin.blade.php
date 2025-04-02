@@ -22,14 +22,14 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"
         integrity="sha384-VFQrHzqBh5qiJIU0uGU5CIW3+OWpdGGJM9LBnGbuIH2mkICcFZ7lPd/AAtI7SNf7" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"
         integrity="sha384-/RlQG9uf0M2vcTw3CX7fbqgbj/h8wKxw7C3zu9/GxcBPRKOEcESxaxufwRXqzq6n" crossorigin="anonymous">
-        </script>
+    </script>
     <script
         src="https://cdn.datatables.net/v/bm/jq-3.7.0/moment-2.29.4/dt-2.2.2/af-2.7.0/b-3.2.2/b-colvis-3.2.2/b-html5-3.2.2/b-print-3.2.2/cr-2.0.4/date-1.5.5/fc-5.0.4/fh-4.0.1/kt-2.12.1/r-3.0.4/rg-1.5.1/rr-1.5.0/sc-2.4.3/sb-1.8.2/sp-2.3.3/sl-3.0.0/sr-1.4.1/datatables.min.js"
         integrity="sha384-eKEPKiCXztYngevfwL+T1R9sNlr77pxH55/cTVUgJGNZkghawmqA6MWVV2IGyE0w" crossorigin="anonymous">
-        </script>
+    </script>
     <!-- ---------------- -->
 </head>
 
@@ -57,12 +57,14 @@
                 </a>
             </li>
 
-            <li>
-                <a href="#">
-                    <i class='bx bxs-group'></i>
-                    <span class="text">Usuarios</span>
-                </a>
-            </li>
+            @if (Auth::user()->role === 'admin')
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-group'></i>
+                        <span class="text">Usuarios</span>
+                    </a>
+                </li>
+            @endif
             <li>
                 <a href="https://boxicons.com/">
                     <i class='bx bx-calculator'></i>
@@ -140,7 +142,8 @@
                         <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Modo oscuro</a></li>
                     </ul>
                     <div class="border-t">
-                        <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
+                        <form id="logout-form" action="{{ route('auth.logout') }}" method="POST"
+                            style="display: none;">
                             @csrf
                         </form>
                         <a href="#" onclick="document.getElementById('logout-form').submit();"
@@ -242,82 +245,10 @@
                     <h2 class="text-2xl font-bold mb-4 text-gray-800">Lista de Registros</h2>
 
                     <!-- Contenedor con desplazamiento para el cuerpo -->
-                    <div class="overflow-x-auto  overflow-x-hidden overflow-y-hidden">
-                        <table id="example"
-                            class="min-w-full table-auto border border-gray-300 overflow-hidden rounded-lg">
-                            <thead class="bg-[#eeeeee] text-black sticky top-0 z-10">
-                                <tr>
-                                    <th class="px-6 py-3 text-left w-12">#</th> <!-- Columna de enumeración -->
-                                    <th class="px-6 py-3 text-left">NSS</th>
-                                    <th class="px-6 py-3 text-left">Estado</th> <!-- Columna de Estado -->
-                                    <th class="px-6 py-3 text-left">Apellido Paterno</th>
-                                    <th class="px-6 py-3 text-left">Apellido Materno</th>
-                                    <th class="px-6 py-3 text-left">Nombre(s)</th>
-                                    <th class="px-6 py-3 text-left">CURP</th>
-                                    <th class="px-6 py-3 text-left">RFC</th>
-                                    <th class="px-6 py-3 text-left">Tipo de Identificación</th>
-                                    <th class="px-6 py-3 text-left">Número de Identificación</th>
-                                    <th class="px-6 py-3 text-left">Fecha Validez</th>
-                                    <th class="px-6 py-3 text-left">Teléfono</th>
-                                    <th class="px-6 py-3 text-left">Celular</th>
-                                    <th class="px-6 py-3 text-left">Género</th>
-                                    <th class="px-6 py-3 text-left">Correo Electrónico</th>
-                                    <th class="px-6 py-3 text-left">Estado Civil</th>
-                                    <th class="px-6 py-3 text-left">Nombre de la Empresa</th>
-                                    <th class="px-6 py-3 text-left">NRPP</th>
-                                    <th class="px-6 py-3 text-left">Teléfono Empresa</th>
-                                    <th class="px-6 py-3 text-left">Calle</th>
-                                    <th class="px-6 py-3 text-left">Colonia</th>
-                                    <th class="px-6 py-3 text-left">Código Postal</th>
-                                    <th class="px-6 py-3 text-left">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200" id="userTable">
-                                <!-- Fila 1 -->
-                                <tr class="hover:bg-gray-100">
-                                    <td class="px-6 py-4 w-12">1</td>
-                                    <td class="px-6 py-4">123456789</td>
-
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="status pending bg-green-200 text-green-700 px-3 py-1 rounded-full text-sm">Completo</span>
-                                    </td>
-                                    <td class="px-6 py-4">González</td>
-                                    <td class="px-6 py-4">Pérez</td>
-                                    <td class="px-6 py-4">Juan</td>
-                                    <td class="px-6 py-4">INE</td>
-                                    <td class="px-6 py-4">JUAN123456HDFRNN03</td>
-                                    <td class="px-6 py-4">JUAN123456</td>
-                                    <td class="px-6 py-4">1234567890</td>
-                                    <td class="px-6 py-4">01/01/2025</td>
-                                    <td class="px-6 py-4">555-1234</td>
-                                    <td class="px-6 py-4">555-5678</td>
-                                    <td class="px-6 py-4">M</td>
-                                    <td class="px-6 py-4">juan@example.com</td>
-                                    <td class="px-6 py-4">Soltero</td>
-                                    <td class="px-6 py-4">Ejemplo SA</td>
-                                    <td class="px-6 py-4">ABC123456</td>
-                                    <td class="px-6 py-4">555-8901</td>
-                                    <td class="px-6 py-4">Calle Ficticia 123</td>
-                                    <td class="px-6 py-4">Centro</td>
-                                    <td class="px-6 py-4">01000</td>
-                                    <td class="px-6 py-4 text-center">
-                                        <button
-                                            class="status pending bg-blue-400 text-white px-3 py-1 rounded-lg text-sm mr-2 hover:shadow-md transition duration-200 cursor-pointer">
-                                            Editar
-                                        </button>
-                                        <button
-                                            class="status pending bg-red-200 text-yellow-700 px-3 py-1 rounded-lg text-sm hover:shadow-md transition duration-200 cursor-pointer">
-                                            Eliminar
-                                        </button>
-                                    </td>
-                                </tr>
-
-
-
-                            </tbody>
-                        </table>
+                    <div id="listaRegistros">
+                        @include('partials.TablaRegistros')
                     </div>
+                    
                 </div>
 
 
