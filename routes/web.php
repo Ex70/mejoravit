@@ -22,6 +22,11 @@ Route::middleware(['auth', NoCache::class, CheckRole::class, RedirectIfSessionEx
     Route::post('/registrar-empleador', [RegistrarEmpleadorController::class, 'store'])->name('registrar_empleador.store');
     Route::get('/inscribir-credito', [DerechoHabienteController::class, 'index'])->name('derecho_habiente.index');
     Route::post('/credito-registrado', [DerechoHabienteController::class, 'store'])->name('derecho_habiente.store');
+
+    // Dashboard (para mostrar el nombre del usuario)
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });
 
 
