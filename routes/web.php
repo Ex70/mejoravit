@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DerechoHabienteController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\RegistrarEmpleadorController;
+use App\Http\Controllers\FormularioController;
 use App\Http\Middleware\CheckRole;
 use App\Http\Middleware\NoCache;
 use App\Http\Middleware\RedirectIfSessionExpired;
@@ -22,6 +23,9 @@ Route::middleware(['auth', NoCache::class, CheckRole::class, RedirectIfSessionEx
     Route::post('/registrar-empleador', [RegistrarEmpleadorController::class, 'store'])->name('registrar_empleador.store');
     Route::get('/inscribir-credito', [DerechoHabienteController::class, 'index'])->name('derecho_habiente.index');
     Route::post('/credito-registrado', [DerechoHabienteController::class, 'store'])->name('derecho_habiente.store');
+    //Ruta para el formulario
+    Route::get('/formulario', [FormularioController::class, 'mostrar'])->name('formulario.mostrar');
+    Route::post('/formulario', [FormularioController::class, 'store'])->name('formulario.store');
 
     // Dashboard (para mostrar el nombre del usuario)
     Route::get('/dashboard', function () {
