@@ -7,6 +7,7 @@
     <title>Formulario para PDF</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.16.0/pdf-lib.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="{{ asset('images/LogoInfonavit.png') }}">
 
     <!-- CSS de Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
@@ -19,7 +20,9 @@
 <body class="bg-gray-100 p-6">
 
 
-    <form id="pdfForm" class="max-w-7xl mx-auto bg-gray shadow-lg overflow-hidden">
+    <form method="POST" action="{{ route('formulario.store') }}" id="pdfForm"
+        class="max-w-7xl mx-auto bg-gray shadow-lg overflow-hidden">
+        @csrf
         <div class="bg-red-300 text-black text-lg font-semibold p-2 flex justify-between items-center">
             <h2>Formulario Página 1</h2>
 
@@ -757,7 +760,7 @@
             }
 
             try {
-                const existingPdfBytes = await fetch("mspt4.pdf").then(res => res.arrayBuffer());
+                const existingPdfBytes = await fetch("/pdfs/mspt4.pdf").then(res => res.arrayBuffer());
                 const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
                 const pages = pdfDoc.getPages();
                 const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
@@ -1143,6 +1146,8 @@
                 link.href = URL.createObjectURL(blob);
                 link.download = "Formulario_Completado.pdf";
                 link.click();
+
+                // document.querySelector('form').submit();
                 // Continúa la manipulación del PDF...
             } catch (error) {
                 console.error("Error al generar el PDF:", error);
