@@ -71,20 +71,28 @@ class FormularioController extends Controller
             'estado_civil' => $request->p1_estado_civil,
             'regimen_patrimonial_del_matrimonio' => $request->p1_regimen_patrimonial,
         ]);
+        $datosEmpresa = DatosEmpresa::create([
+            'nombre_empresa' => $request->p2_nombre_empresa,
+            'registro_patronal' => $request->p2_nrpp,
+            'telefono_prefijo' => $request->p2_lada_empresa,
+            'telefono_numero' => $request->p2_numero_empresa,
+            'telefono_extension' => $request->p2_extension_empresa,
+            'derechohabiente_id' => $nuevoCredito->id, // <-- relación directa
+        ]);
 
-        $IdCredito = $nuevoCredito->id;
+        // $IdCredito = $nuevoCredito->id;
 
-        $postEmpresa = new DatosEmpresa();
-        $postEmpresa->nombre_empresa = $request->p2_nombre_empresa;
-        $postEmpresa->registro_patronal = $request->p2_nrpp;
-        $postEmpresa->telefono_prefijo = $request->p2_lada_empresa;
-        $postEmpresa->telefono_numero = $request->p2_numero_empresa;
-        $postEmpresa->telefono_extension = $request->p2_extension_empresa;
-        $postEmpresa->derechohabiente_id = $IdCredito;
-        $postEmpresa->save();
+        // $postEmpresa = new DatosEmpresa();
+        // $postEmpresa->nombre_empresa = $request->p2_nombre_empresa;
+        // $postEmpresa->registro_patronal = $request->p2_nrpp;
+        // $postEmpresa->telefono_prefijo = $request->p2_lada_empresa;
+        // $postEmpresa->telefono_numero = $request->p2_numero_empresa;
+        // $postEmpresa->telefono_extension = $request->p2_extension_empresa;
+        // $postEmpresa->derechohabiente_id = $IdCredito;
+        // $postEmpresa->save();
 
 
-        // DB::table('datos_viviendas')->insert([
+        // // DB::table('datos_viviendas')->insert([
         //     'vivienda_mejorar' => $request->p3_vivienda,
         //     'calle' => $request->p3_calle,
         //     'numero_exterior' => $request->p3_no_ext,
