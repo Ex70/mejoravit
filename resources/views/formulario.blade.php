@@ -188,11 +188,11 @@
                         <div class="grid grid-cols-3 gap-4">
                             <div class="col-span-2">
                                 <label for="nombre_empresa" class="block font-medium">Nombre de la empresa</label>
-                                <input type="text" id="nombre_empresa" class="w-full p-2 border rounded" required>
+                                <input type="text" id="nombre_empresa" name="p2_nombre_empresa" class="w-full p-2 border rounded" required>
                             </div>
                             <div>
                                 <label for="nrpp" class="block font-medium">NRPP</label>
-                                <input type="text" id="nrpp" class="w-full p-2 border rounded" required>
+                                <input type="text" id="nrpp" name="p2_nrpp" class="w-full p-2 border rounded" required>
                             </div>
                         </div>
 
@@ -206,17 +206,17 @@
                             <div class="flex space-x-2">
                                 <div class="w-16">
                                     <label for="lada_empresa" class="block font-medium">Lada</label>
-                                    <input type="text" id="lada_empresa" class="w-full p-2 border rounded text-center"
+                                    <input type="text" id="lada_empresa" name="p2_lada_empresa" class="w-full p-2 border rounded text-center"
                                         maxlength="3" required>
                                 </div>
                                 <div class=" ">
                                     <label for="numero_empresa" class="block font-medium">Número</label>
-                                    <input type="text" id="numero_empresa" class="w-full p-2 border rounded" required>
+                                    <input type="text" id="numero_empresa" name="p2_numero_empresa" class="w-full p-2 border rounded" required>
                                 </div>
                             </div>
                             <div>
                                 <label for="extension_empresa" class="block font-medium">Extensión</label>
-                                <input type="text" id="extension_empresa" class="w-full p-2 border rounded">
+                                <input type="text" id="extension_empresa" name="p2_extension_empresa" class="w-full p-2 border rounded">
                             </div>
                             <!--  -->
                         </div>
@@ -236,7 +236,7 @@
                         <div class="grid grid-cols-3 gap-4">
                             <div class="col-span-1">
                                 <label class="block font-medium">LA VIVIENDA PARA MEJORAR ES:</label>
-                                <select id="vivienda" class="w-full p-2 border rounded " required>
+                                <select id="vivienda" class="w-full p-2 border rounded " name="p3_vivienda" required>
                                     <option value="" selected disabled>Seleccione una opción</option>
                                     <option value="propia">Propia</option>
                                     <option value="conyuge">Cónyuge o Concubino(a)</option>
@@ -245,48 +245,48 @@
                             </div>
                             <div class="col-span-2">
                                 <label for="calle" class="block font-medium ">Calle</label>
-                                <input type="text" id="calle" class="w-full p-2 border rounded" required>
+                                <input type="text" id="calle" name="p3_calle" class="w-full p-2 border rounded" required>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 gap-4 mt-4">
                             <div>
                                 <label for="colonia" class="block font-medium">Colonia o Fraccionamiento</label>
-                                <input type="text" id="colonia" class="w-full p-2 border rounded" required>
+                                <input type="text" id="colonia" name="'p3_colonia" class="w-full p-2 border rounded" required>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-4 gap-4 mt-4">
                             <div>
                                 <label for="no_ext" class="block font-medium">No. EXT.</label>
-                                <input type="text" id="no_ext" class="w-full p-2 border rounded" required>
+                                <input type="text" id="no_ext" name="p3_no_ext" class="w-full p-2 border rounded" required>
                             </div>
                             <div>
                                 <label for="no_int" class="block font-medium">No. INT.</label>
-                                <input type="text" id="no_int" class="w-full p-2 border rounded">
+                                <input type="text" id="no_int" name="p3_no_int" class="w-full p-2 border rounded">
                             </div>
                             <div>
                                 <label for="lote" class="block font-medium">LOTE</label>
-                                <input type="text" id="lote" class="w-full p-2 border rounded">
+                                <input type="text" id="lote" name="p3_lote" class="w-full p-2 border rounded">
                             </div>
                             <div>
                                 <label for="mza" class="block font-medium">MZA.</label>
-                                <input type="text" id="mza" class="w-full p-2 border rounded">
+                                <input type="text" id="mza" name="p3_mza" class="w-full p-2 border rounded">
                             </div>
                         </div>
 
                         <div class="grid grid-cols-3 gap-4 mt-4">
                             <div>
                                 <label for="entidad" class="block font-medium">Entidad</label>
-                                <input type="text" id="entidad" class="w-full p-2 border rounded" required>
+                                <input type="text" id="entidad" name="p3_entidad" class="w-full p-2 border rounded" required>
                             </div>
                             <div>
                                 <label for="municipio" class="block font-medium">Municipio o Alcaldía</label>
-                                <input type="text" id="municipio" class="w-full p-2 border rounded" required>
+                                <input type="text" id="municipio" name="p3_municipio" class="w-full p-2 border rounded" required>
                             </div>
                             <div>
                                 <label for="codigo_postal" class="block font-medium">Código Postal</label>
-                                <input type="text" id="codigo_postal" class="w-full p-2 border rounded" required>
+                                <input type="text" id="codigo_postal" name="p3_codigo_postal" class="w-full p-2 border rounded" required>
                             </div>
                         </div>
                     </div>
@@ -661,7 +661,7 @@
             </div>
 
             <br> <br>
-            <button type="button" onclick="generarPDF()"
+            <button type="submit" onclick="generarPDF()"
                 class="w-[70%] mb-4 mx-auto block bg-blue-500 text-white py-2 px-4 rounded">
                 📄 Generar PDF
             </button>
