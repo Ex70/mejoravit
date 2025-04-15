@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\DatosEmpresa;
 use App\Models\DerechoHabiente;
+use App\Models\DatosVivienda;
+use App\Models\DatosCredito;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -41,16 +43,22 @@ class FormularioController extends Controller
             'p2_numero_empresa' => 'required',
             'p2_extension_empresa' => 'required',
 
-            // 'p3_vivienda' => 'required',
-            // 'p3_calle' => 'required',
-            // 'p3_colonia' => 'required',
-            // 'p3_no_ext' => 'required',
-            // 'p3_no_int' => 'nullable',
-            // 'p3_lote' => 'nullable',
-            // 'p3_mza' => 'nullable',
-            // 'p3_entidad' => 'required',
-            // 'p3_municipio' => 'required',
-            // 'p3_codigo_postal' => 'required',
+            'p3_vivienda' => 'required',
+            'p3_calle' => 'required',
+            'p3_colonia' => 'required',
+            'p3_no_ext' => 'required',
+            'p3_no_int' => 'nullable',
+            'p3_lote' => 'nullable',
+            'p3_mza' => 'nullable',
+            'p3_entidad' => 'required',
+            'p3_municipio' => 'required',
+            'p3_codigo_postal' => 'required',
+
+            'p4_monto_credito1' => 'required',
+            'p4_monto_credito2' => 'required',
+            'p4_monto_credito3' => 'required',
+            'p4_monto_credito4' => 'required',
+
         ]);
 
         $nuevoCredito = DerechoHabiente::create([
@@ -71,6 +79,7 @@ class FormularioController extends Controller
             'estado_civil' => $request->p1_estado_civil,
             'regimen_patrimonial_del_matrimonio' => $request->p1_regimen_patrimonial,
         ]);
+
         $datosEmpresa = DatosEmpresa::create([
             'nombre_empresa' => $request->p2_nombre_empresa,
             'registro_patronal' => $request->p2_nrpp,
@@ -79,6 +88,43 @@ class FormularioController extends Controller
             'telefono_extension' => $request->p2_extension_empresa,
             'derechohabiente_id' => $nuevoCredito->id, // <-- relación directa
         ]);
+
+
+        $datosVivienda = DatosVivienda::create([
+            'vivienda_mejorar' => $request->p3_vivienda,
+            'calle' => $request->p3_calle,
+            'numero_exterior' => $request->p3_no_ext,
+            'numero_interior' => $request->p3_no_int,
+            'lote' => $request->p3_lote,
+            'manzana' => $request->p3_mza,
+            'colonia' => $request->p3_colonia,
+            'entidad' => $request->p3_entidad,
+            'municipio' => $request->p3_municipio,
+            'codigo_postal' => $request->p3_codigo_postal,
+            'derechohabiente_id' => $nuevoCredito->id,
+
+        ]);
+
+        // Obtener los valores como string por si vienen con ceros al inicio
+        $monto1 = str_pad($request->p4_monto_credito1, 3, '0', STR_PAD_LEFT);
+        $monto2 = str_pad($request->p4_monto_credito2, 3, '0', STR_PAD_LEFT);
+        $monto3 = str_pad($request->p4_monto_credito3, 2, '0', STR_PAD_LEFT);
+        $plazo = $request->p4_monto_credito4;
+
+
+        // Concatenar todo en formato de número decimal
+        $montoCompleto = floatval("{$monto1}{$monto2}.{$monto3}");
+
+        // Redondear SIEMPRE hacia arriba al millar más cercano
+        $montoFinal = ceil($montoCompleto / 1000) * 1000;
+
+        $datosCredito = DatosCredito::create([
+            'monto_credito' => $montoFinal,
+            'plazo_credito' => $plazo,
+            'derechohabiente_id' => $nuevoCredito->id, // Asegúrate que esta variable exista
+        ]);
+
+
 
         // $IdCredito = $nuevoCredito->id;
 
@@ -91,22 +137,6 @@ class FormularioController extends Controller
         // $postEmpresa->derechohabiente_id = $IdCredito;
         // $postEmpresa->save();
 
-
-        // // DB::table('datos_viviendas')->insert([
-        //     'vivienda_mejorar' => $request->p3_vivienda,
-        //     'calle' => $request->p3_calle,
-        //     'numero_exterior' => $request->p3_no_ext,
-        //     'numero_interior' => $request->p3_no_int,
-        //     'lote' => $request->p3_lote,
-        //     'manzana' => $request->p3_mza,
-        //     'colonia' => $request->p3_colonia,
-        //     'entidad' => $request->p3_entidad,
-        //     'municipio' => $request->p3_municipio,
-        //     'codigo_postal' => $request->p3_codigo_postal,
-        //     'derechohabiente_id' => 3,
-        //     'created_at' => now(),
-        //     'updated_at' => now(),
-        // ]);
 
         return redirect()->back()->with('success', 'Datos guardados correctamente.');
     }
