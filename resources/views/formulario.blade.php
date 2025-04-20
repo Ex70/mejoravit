@@ -368,10 +368,9 @@
                         <br>
                         <hr>
                         <br>
-                        <div class="bg-red-50 text-black text-lg font-semibold p-2">
+                        <!-- <div class="bg-red-50 text-black text-lg font-semibold p-2">
                             4.1. DESTINO DE LOS RECURSOS
                         </div>
-                        <!-- Porcentaje de Titulación -->
                         <div class="mt-6">
                             <label class="block font-medium">Solicito destinar:</label>
                             <div class="flex items-center space-x-2">
@@ -386,7 +385,6 @@
                             </p>
                         </div>
 
-                        <!-- Cuenta CLABE de la Notaría -->
                         <div class="mt-4">
                             <label for="cuenta_clabe_notaria" class="block font-medium">CUENTA CLABE DE LA NOTARÍA A LA
                                 QUE SE LE REALIZARÁ EL PAGO:</label>
@@ -396,7 +394,6 @@
                                 Derechohabiente.</p>
                         </div>
 
-                        <!-- Cuenta CLABE para el pago de materiales -->
                         <div class="mt-6">
                             <label class="block font-medium">El porcentaje restante será únicamente destinado para la
                                 adquisición de productos para la reparación, ampliación o mejora de la vivienda.</label>
@@ -412,7 +409,7 @@
                                 class="w-full p-2 border rounded mt-1" placeholder="Ingrese CLABE">
                             <p class="text-sm text-gray-500 mt-1">** La cuenta CLABE será verificada y deberá estar a
                                 nombre de la o el <strong>derechohabiente.</strong> </p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
