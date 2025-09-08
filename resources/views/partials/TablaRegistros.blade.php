@@ -4,7 +4,6 @@
             <tr>
                 <th class="px-6 py-3 text-left w-12">#</th> <!-- Columna de enumeración -->
                 <th class="px-6 py-3 text-left">NSS</th>
-                <th class="px-6 py-3 text-left">Estado</th> <!-- Columna de Estado -->
                 <th class="px-6 py-3 text-left">Apellido Paterno</th>
                 <th class="px-6 py-3 text-left">Apellido Materno</th>
                 <th class="px-6 py-3 text-left">Nombre(s)</th>
@@ -33,11 +32,6 @@
                 <tr class="hover:bg-gray-100">
                     <td class="px-6 py-4 w-12">{{ $registros->id }}</td>
                     <td class="px-6 py-4">{{ $registros->nss }}</td>
-
-                    <td class="px-6 py-4">
-                        <span
-                            class="status pending bg-green-200 text-green-700 px-3 py-1 rounded-full text-sm">Completo</span>
-                    </td>
                     <td class="px-6 py-4">{{ $registros->apellido_paterno }}</td>
                     <td class="px-6 py-4">{{ $registros->apellido_materno }}</td>
                     <td class="px-6 py-4">{{ $registros->nombre }}</td>
@@ -60,9 +54,9 @@
                     <td class="px-6 py-4">{{ $registros->datosvivienda->first()->codigo_postal ?? 'N/A' }}</td>
                     <td class="px-6 py-4 text-center">
                         <button
-                            class="status pending bg-blue-400 text-white px-3 py-1 rounded-lg text-sm mr-2 hover:shadow-md transition duration-200 cursor-pointer">
+                            class="status completed bg-red-200 text-yellow-700 px-3 py-1 rounded-lg text-sm hover:shadow-md transition duration-200 cursor-pointer" href="formulario/{{$registros->id}}">
                             Editar
-                        </button>
+                        </button><br>
                         <button
                             class="status pending bg-red-200 text-yellow-700 px-3 py-1 rounded-lg text-sm hover:shadow-md transition duration-200 cursor-pointer">
                             Eliminar

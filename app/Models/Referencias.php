@@ -13,10 +13,14 @@ class Referencias extends Model
         'primero_apellido_materno',
         'primero_nombre',
         'primero_celular',
+        'primero_telefono_prefijo',
+        'primero_telefono_numero',
         'segundo_apellido_paterno',
         'segundo_apellido_materno',
         'segundo_nombre',
         'segundo_celular',
+        'segundo_telefono_prefijo',
+        'segundo_telefono_numero',
 
         // Foreign key
         'derechohabiente_id',

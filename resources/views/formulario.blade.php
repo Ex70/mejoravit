@@ -19,8 +19,10 @@
 
 <body class="bg-gray-100 p-6">
 
-
-    <form method="POST" action="{{ route('formulario.store') }}" id="pdfForm"
+{{-- 
+    <form method="POST" onsubmit="return generarPDF()" action="{{ route('formulario.store') }}" id="pdfForm"
+        class="max-w-7xl mx-auto bg-gray shadow-lg overflow-hidden"> --}}
+        <form id="pdfForm"
         class="max-w-7xl mx-auto bg-gray shadow-lg overflow-hidden">
         @csrf
         <div class="bg-red-300 text-black text-lg font-semibold p-2 flex justify-between items-center">
@@ -368,7 +370,7 @@
                         <br>
                         <hr>
                         <br>
-                        <!-- <div class="bg-red-50 text-black text-lg font-semibold p-2">
+                        <div class="bg-red-50 text-black text-lg font-semibold p-2">
                             4.1. DESTINO DE LOS RECURSOS
                         </div>
                         <div class="mt-6">
@@ -409,7 +411,7 @@
                                 class="w-full p-2 border rounded mt-1" placeholder="Ingrese CLABE">
                             <p class="text-sm text-gray-500 mt-1">** La cuenta CLABE será verificada y deberá estar a
                                 nombre de la o el <strong>derechohabiente.</strong> </p>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
 
@@ -437,35 +439,35 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label for="rf1_apellido_paterno" class="block font-medium">Apellido Paterno</label>
-                                <input type="text" id="rf1_apellido_paterno" class="w-full p-2 border rounded"
-                                    placeholder="Ingrese Apellido Paterno">
+                                <input type="text" id="rf1_apellido_paterno" name="rf1_apellido_paterno"
+                                    class="w-full p-2 border rounded" placeholder="Ingrese Apellido Paterno">
                             </div>
                             <div>
                                 <label for="rf1_apellido_materno" class="block font-medium">Apellido Materno</label>
-                                <input type="text" id="rf1_apellido_materno" class="w-full p-2 border rounded"
-                                    placeholder="Ingrese Apellido Materno">
+                                <input type="text" id="rf1_apellido_materno" name="rf1_apellido_materno"
+                                    class="w-full p-2 border rounded" placeholder="Ingrese Apellido Materno">
                             </div>
                         </div>
                         <div class="mt-4">
                             <label for="rf1_nombres" class="block font-medium">Nombres</label>
-                            <input type="text" id="rf1_nombres" class="w-full p-2 border rounded"
+                            <input type="text" id="rf1_nombres" name="rf1_nombres" class="w-full p-2 border rounded"
                                 placeholder="Ingrese Nombres" required>
                         </div>
                         <div class="flex space-x-2 mt-4">
                             <div class="w-1/4">
                                 <label for="rf1_lada" class="block font-medium">LADA</label>
-                                <input type="text" id="rf1_lada" class="w-full p-2 border rounded text-center"
-                                    maxlength="3" placeholder="Ej: 55">
+                                <input type="text" id="rf1_lada" name="rf1_lada"
+                                    class="w-full p-2 border rounded text-center" maxlength="3" placeholder="Ej: 55">
                             </div>
                             <div class="w-1/2">
                                 <label for="rf1_numero" class="block font-medium">Número</label>
-                                <input type="text" id="rf1_numero" class="w-full p-2 border rounded" maxlength="8"
-                                    placeholder="Ej: 12345678">
+                                <input type="text" id="rf1_numero" name="rf1_numero" class="w-full p-2 border rounded"
+                                    maxlength="8" placeholder="Ej: 12345678">
                             </div>
                             <div class="w-1/2">
                                 <label for="rf1_celular" class="block font-medium">Celular</label>
-                                <input type="text" id="rf1_celular" class="w-full p-2 border rounded" maxlength="10"
-                                    placeholder="Ej: 12345678" required>
+                                <input type="text" id="rf1_celular" name="rf1_celular" class="w-full p-2 border rounded"
+                                    maxlength="10" placeholder="Ej: 12345678" required>
                             </div>
                         </div>
                         <br>
@@ -476,35 +478,35 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label for="rf2_apellido_paterno" class="block font-medium">Apellido Paterno</label>
-                                <input type="text" id="rf2_apellido_paterno" class="w-full p-2 border rounded"
-                                    placeholder="Ingrese Apellido Paterno">
+                                <input type="text" id="rf2_apellido_paterno" name="rf2_apellido_paterno"
+                                    class="w-full p-2 border rounded" placeholder="Ingrese Apellido Paterno">
                             </div>
                             <div>
                                 <label for="rf2_apellido_materno" class="block font-medium">Apellido Materno</label>
-                                <input type="text" id="rf2_apellido_materno" class="w-full p-2 border rounded"
-                                    placeholder="Ingrese Apellido Materno">
+                                <input type="text" id="rf2_apellido_materno" name="rf2_apellido_materno"
+                                    class="w-full p-2 border rounded" placeholder="Ingrese Apellido Materno">
                             </div>
                         </div>
                         <div class="mt-4">
                             <label for="rf2_nombres" class="block font-medium">Nombres</label>
-                            <input type="text" id="rf2_nombres" class="w-full p-2 border rounded"
+                            <input type="text" id="rf2_nombres" name="rf2_nombres" class="w-full p-2 border rounded"
                                 placeholder="Ingrese Nombres" required>
                         </div>
                         <div class="flex space-x-2 mt-4">
                             <div class="w-1/4">
                                 <label for="rf2_lada" class="block font-medium">LADA</label>
-                                <input type="text" id="rf2_lada" class="w-full p-2 border rounded text-center"
-                                    maxlength="3" placeholder="Ej: 55">
+                                <input type="text" id="rf2_lada" name="rf2_lada"
+                                    class="w-full p-2 border rounded text-center" maxlength="3" placeholder="Ej: 55">
                             </div>
                             <div class="w-1/2">
                                 <label for="rf2_numero" class="block font-medium">Número</label>
-                                <input type="text" id="rf2_numero" class="w-full p-2 border rounded" maxlength="8"
-                                    placeholder="Ej: 12345678">
+                                <input type="text" id="rf2_numero" name="rf2_numero" class="w-full p-2 border rounded"
+                                    maxlength="8" placeholder="Ej: 12345678">
                             </div>
                             <div class="w-1/2">
                                 <label for="rf2_celular" class="block font-medium">Celular</label>
-                                <input type="text" id="rf2_celular" class="w-full p-2 border rounded" maxlength="10"
-                                    placeholder="Ej: 12345678" required>
+                                <input type="text" id="rf2_celular" name="rf2_celular" class="w-full p-2 border rounded"
+                                    maxlength="10" placeholder="Ej: 12345678" required>
                             </div>
                         </div>
                     </div>
@@ -525,23 +527,23 @@
                         <div class="grid grid-cols-4 gap-4 mb-4">
                             <div>
                                 <label for="parentesco" class="block font-medium">Parentesco</label>
-                                <input type="text" id="bf_parentesco" class="w-full p-2 border rounded"
-                                    placeholder="Ingrese Parentesco" required>
+                                <input type="text" id="bf_parentesco" name="bf_parentesco"
+                                    class="w-full p-2 border rounded" placeholder="Ingrese Parentesco" required>
                             </div>
                             <div>
                                 <label for="apellido_paterno" class="block font-medium">Apellido Paterno</label>
-                                <input type="text" id="bf_apellido_paterno" class="w-full p-2 border rounded"
-                                    placeholder="Ingrese Apellido Paterno">
+                                <input type="text" id="bf_apellido_paterno" name="bf_apellido_paterno"
+                                    class="w-full p-2 border rounded" placeholder="Ingrese Apellido Paterno">
                             </div>
                             <div>
                                 <label for="apellido_materno" class="block font-medium">Apellido Materno</label>
-                                <input type="text" id="bf_apellido_materno" class="w-full p-2 border rounded"
-                                    placeholder="Ingrese Apellido Materno">
+                                <input type="text" id="bf_apellido_materno" name="bf_apellido_materno"
+                                    class="w-full p-2 border rounded" placeholder="Ingrese Apellido Materno">
                             </div>
 
                             <div class="mb-4">
                                 <label for="nombres" class="block font-medium">Nombre(s)</label>
-                                <input type="text" id="bf_nombres" class="w-full p-2 border rounded"
+                                <input type="text" id="bf_nombres" name="bf_nombres" class="w-full p-2 border rounded"
                                     placeholder="Ingrese Nombre(s)" required>
                             </div>
                         </div>
@@ -577,7 +579,8 @@
                                 <!-- Selección de Ciudad -->
                                 <div>
                                     <label for="ciudad" class="block font-medium">Ciudad</label>
-                                    <select id="manifiesto_ciudad" class="w-full p-2 border rounded select2" required>
+                                    <select id="manifiesto_ciudad" name="localidad"
+                                        class="w-full p-2 border rounded select2" required>
                                         <option value="">Escriba y seleccione una ciudad...</option>
                                         <option value="otro">Otro (Escribir manualmente)</option>
                                     </select>
@@ -586,14 +589,15 @@
                                 <!-- Fecha -->
                                 <div>
                                     <label for="fecha" class="block font-medium">Fecha</label>
-                                    <input type="date" id="manifiesto_fecha" class="w-full p-2 border rounded" required>
+                                    <input type="date" id="manifiesto_fecha" name="fecha"
+                                        class="w-full p-2 border rounded" required>
                                 </div>
                             </div>
 
                             <!-- Campo para ingresar otra ciudad manualmente (oculto por defecto) -->
                             <div class="mb-4 hidden" id="otro_ciudad_container">
                                 <label for="otro_ciudad" class="block font-medium">Ingrese su ciudad</label>
-                                <input type="text" id="otro_ciudad" class="w-full p-2 border rounded"
+                                <input type="text" id="otro_ciudad" name="otra_ciudad" class="w-full p-2 border rounded"
                                     placeholder="Ingrese su ciudad manualmente">
                             </div>
                         </div>
@@ -626,7 +630,7 @@
                             <label for="descripcion_mejora" class="block font-medium mt-2">
                                 Describa brevemente la mejora o remodelación a realizar
                             </label>
-                            <textarea id="descripcion_mejora" class="w-full p-2 border rounded"
+                            <textarea id="descripcion_mejora" name="descripcion" class="w-full p-2 border rounded"
                                 placeholder="Describa brevemente la mejora o remodelación a realizar..." maxlength="328"
                                 required></textarea>
                             <p id="contador" class="text-sm text-gray-500">0/300 caracteres</p>
@@ -667,9 +671,15 @@
             </div>
 
             <br> <br>
-            <button type="submit" onclick="generarPDF()"
+            {{-- <button type="submit" class="w-[70%] mb-4 mx-auto block bg-blue-500 text-white py-2 px-4 rounded"> --}}
+            <button onclick="generarPDF()"
                 class="w-[70%] mb-4 mx-auto block bg-blue-500 text-white py-2 px-4 rounded">
                 📄 Generar PDF
+            </button>
+
+            <button type="submit"
+                class="w-[70%] mb-4 mx-auto block bg-blue-500 text-white py-2 px-4 rounded">
+                📄 Guardar registro
             </button>
     </form>
     <script>
@@ -988,7 +998,7 @@
                     let page = pages[3];
 
                     // Obtener el contenido del textarea
-                    let descripcion = document.getElementById("descripcion_mejora").value;
+                    let descripcion = document.getElementById("descripcion_mejora").value.trim();
 
                     // Definir límites y formato del texto en el PDF
                     let startX = 83;  // Posición horizontal
@@ -997,7 +1007,7 @@
                     let lineHeight = 22; // 🔹 Espaciado entre líneas aumentado
 
                     // Dividir el texto en líneas según el ancho permitido
-                    let palabras = descripcion.split(" ");
+                    let palabras = descripcion.split("\n");
                     let lineaActual = "";
 
                     palabras.forEach((palabra) => {
@@ -1031,8 +1041,8 @@
                     let page = pages[4];
 
                     let nombreCompleto = [nombre, apellido_paterno, apellido_materno].filter(Boolean).join(" ").toUpperCase();
-                    page.drawText(nombreCompleto, { x: 90, y: 527, size: fontSize, font: font });
-                    page.drawText(nss, { x: 267, y: 493.5, size: fontSize, font: font });
+                    page.drawText(nombreCompleto, { x: 90, y: 555, size: fontSize, font: font });
+                    page.drawText(nss, { x: 265, y: 525, size: fontSize, font: font });
 
                     let direccionArray = [];
 
@@ -1044,15 +1054,15 @@
                     let direccionTexto = direccionArray.join("   "); // Agrega más espacios entre los datos
 
                     if (direccionTexto) {
-                        page.drawText(calle + ", " + direccionTexto + ", " + colonia, { x: 87, y: 435, size: fontSize, font: font });
+                        page.drawText(calle + ", " + direccionTexto + ", " + colonia, { x: 87, y: 448, size: fontSize, font: font });
                     }
                     // Obtener el contenido del textarea
                     let descripcion = document.getElementById("descripcion_mejora").value.trim();
 
                     // Definir límites y formato del texto en el PDF
                     let startX = 83;         // Posición horizontal
-                    let startY = 347;        // Posición vertical inicial
-                    let maxWidth = 450;      // Ancho máximo antes de hacer salto de línea
+                    let startY = 360;        // Posición vertical inicial
+                    let maxWidth = 455;      // Ancho máximo antes de hacer salto de línea
                     let lineHeight = 27;     // Espaciado entre líneas
 
                     // Función para dividir el texto en líneas respetando el ancho máximo
@@ -1095,7 +1105,7 @@
                         startY -= lineHeight;
                     });
 
-                    page.drawText(municipio + ", " + entidad + ". C.P. " + codigo_postal, { x: 87, y: 410, size: fontSize, font: font });
+                    page.drawText(municipio + ", " + entidad + ". C.P. " + codigo_postal, { x: 87, y: 425, size: fontSize, font: font });
 
                     function formatoMoneda(monto) {
                         return new Intl.NumberFormat("es-MX", {

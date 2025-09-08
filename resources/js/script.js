@@ -2,6 +2,7 @@ const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 const dashboardContent = document.getElementById('dashboard-content');
 const registrosContent = document.getElementById('registros-content');
 const usuariosContent = document.getElementById('usuarios-content');
+const calculadoraContent = document.getElementById('calculadora-content');
 
 // Función para mostrar la sección según el nombre
 function showSection(section) {
@@ -9,6 +10,7 @@ function showSection(section) {
     dashboardContent.classList.add('hidden');
     registrosContent.classList.add('hidden');
     usuariosContent.classList.add('hidden');
+    calculadoraContent.classList.add('hidden');
 
     // Mostrar la sección correspondiente
     if (section === 'dashboard') {
@@ -17,6 +19,8 @@ function showSection(section) {
         registrosContent.classList.remove('hidden');
     } else if (section === 'usuarios') {
         usuariosContent.classList.remove('hidden');
+    } else if (section === 'calculadoras') {
+        calculadoraContent.classList.remove('hidden');
     }
 }
 

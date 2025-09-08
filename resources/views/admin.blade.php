@@ -66,13 +66,13 @@
                 </li>
             @endif
             <li>
-                <a href="https://boxicons.com/">
+                <a href="#">
                     <i class='bx bx-calculator'></i>
-                    <span class="text">Calculadora Linea IV </span>
+                    <span class="text">Calculadoras</span>
                 </a>
             </li>
             <li>
-                <a href="https://boxicons.com/">
+                <a href="#">
                     <i class='bx bx-notepad'></i>
                     <span class="text">Contrato Remodelación</span>
                 </a>
@@ -246,6 +246,34 @@
                     <!-- Contenedor con desplazamiento para el cuerpo -->
                     <div id="listaRegistros">
                         @include('partials.TablaRegistros')
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Sección de Calculadora (oculta inicialmente) -->
+            <div id="calculadora-content" class="hidden">
+                <div class="rounded-lg mx-auto bg-white p-6 shadow-md">
+                    {{-- <h2 class="text-2xl font-bold mb-4 text-gray-800">Calculadora Linea IV</h2> --}}
+
+                    <!-- Contenedor con desplazamiento para el cuerpo -->
+                    <div id="calculadora">
+                        @include('partials.calculadora')
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Sección de Calculadora (oculta inicialmente) -->
+            <div id="contrato-r-content" class="hidden">
+                <div class="rounded-lg mx-auto bg-white p-6 shadow-md">
+                    {{-- <h2 class="text-2xl font-bold mb-4 text-gray-800">Calculadora Linea IV</h2> --}}
+
+                    <!-- Contenedor con desplazamiento para el cuerpo -->
+                    <div id="contratos">
+                        @include('partials.contratoRemodelacion')
                     </div>
 
                 </div>
